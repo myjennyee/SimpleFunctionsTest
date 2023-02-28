@@ -1,0 +1,16 @@
+
+
+//함수 정의할 때
+public void ArcToPLine(){}
+
+//foreach 구문은 배열 안의 특정 데이터타입의 객체에 대하여 함수를 반복해 사용할 때
+foreach (vdFigure f in vdsc.BaseControl.ActiveDocument.Model.Entities){}
+
+//새로운 객체 만들 때
+vdPolyline vpl = new vdPolyline();
+
+//폴리라인 만들 때
+vdPolyline vpl = l.AsPolyline();
+
+//콘솔에 테스트할 때
+Console.WriteLine(vpl.Id);
