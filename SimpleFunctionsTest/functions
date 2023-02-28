@@ -4,7 +4,10 @@
 public void ArcToPLine(){}
 
 //foreach 구문은 배열 안의 특정 데이터타입의 객체에 대하여 함수를 반복해 사용할 때
-foreach (vdFigure f in vdsc.BaseControl.ActiveDocument.Model.Entities){}
+foreach (vdFigure f in vdsc.BaseControl.ActiveDocument.Model.Entities)
+{
+    vdLine vl = (vdLine)f; //데이터 타입 한번 더 확인하기.
+}
 
 //새로운 객체 만들 때
 vdPolyline vpl = new vdPolyline();
@@ -18,3 +21,14 @@ Console.WriteLine(vpl.Id);
 //리스트 만들 때
 데이터타입 혹은 클래스가 들어갈 수 있음.
 List<vdLine> LineGroup = new List<vdLine>();
+
+//벡터 드로우에서 객체 표시할 때 세트.
+vpl.Update();
+
+vpl.SetUnRegisterDocument(vdsc.BaseControl.ActiveDocument);
+vpl.setDocumentDefaults();
+
+vpl.Flag = VectorDraw.Professional.Constants.VdConstPlineFlag.PlFlagCLOSE;
+vdsc.BaseControl.ActiveDocument.ActiveLayOut.Entities.AddItem(vpl);
+vdsc.BaseControl.ActiveDocument.ActiveLayOut.Entities.RemoveItem();
+vdsc.BaseControl.ActiveDocument.Redraw(true);
